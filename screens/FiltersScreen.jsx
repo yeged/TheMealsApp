@@ -2,7 +2,7 @@ import React from "react";
 import {View, Text, StyleSheet} from "react-native";
 
 
-function (){
+function FilterScreen(){
 
 }
 
@@ -14,4 +14,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default
+export default FilterScreen;

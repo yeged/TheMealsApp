@@ -3,7 +3,12 @@ import {View, Text, StyleSheet} from "react-native";
 
 
 function MealDetailScreen(){
-    
+    return(
+        <View>
+            <Text>This is Meal screen</Text>
+        </View>
+    )
+   
 }
 
 const styles = StyleSheet.create({
