@@ -1,8 +1,12 @@
 import React from "react";
 import {View, Text, StyleSheet, Button} from "react-native";
+import { CATEGORIES } from "../data/dummy-data";
 
 
 function MealDetailScreen(props){
+
+    
+
     return(
         <View style={styles.screen}>
             <Text>This is Meal screen</Text>

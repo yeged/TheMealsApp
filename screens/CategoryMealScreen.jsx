@@ -1,11 +1,18 @@
 import React from "react";
 import {View, Text, StyleSheet, Button} from "react-native";
 
+import {CATEGORIES} from "../data/dummy-data"
 
 function CategoryMealScreen(props){
+
+    const catId = props.navigation.getParam("categoryId");
+
+    const selectedMeal = CATEGORIES.find((value) => value.id === catId)
+
     return(
         <View style={styles.screen}>
             <Text>This is Meal screen</Text>
+            <Text> {selectedMeal.title} </Text>
             <Button title="Go To Detail" onPress={() => {
                 props.navigation.push("MealDetail") // u can use push instead of navigate in same screen different content
             }} />
