@@ -4,10 +4,14 @@ import {View, Text, StyleSheet, Button} from "react-native";
 
 function CategoryMealScreen(props){
     return(
-        <View>
+        <View style={styles.screen}>
             <Text>This is Meal screen</Text>
             <Button title="Go To Detail" onPress={() => {
-                props.navigation.navigate({routeName: "MealDetail"})
+                props.navigation.push("MealDetail") // u can use push instead of navigate in same screen different content
+            }} />
+            <Button title="Go Back" onPress={() => {
+                //props.navigation.goBack(); // GO BACK
+                props.navigation.pop();  // GO BACK FOR STACK
             }} />
         </View>
     )

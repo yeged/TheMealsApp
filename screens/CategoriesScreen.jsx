@@ -9,6 +9,7 @@ function CategoriesScreen(props){
             <Text>LOL</Text>
             <Button title="Go To Meals" onPress={() => {
                 props.navigation.navigate({routeName: "CategoryMeal"})
+                //props.navigation.replace("CategoryMeal") // Cant go back with replace
             }} />
         </View>
     )
