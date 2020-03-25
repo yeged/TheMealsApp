@@ -1,33 +1,41 @@
 import React, {useState} from "react";
-import {View, Text, StyleSheet, Button, FlatList} from "react-native";
+import {View, Text, StyleSheet, Button, FlatList, TouchableOpacity} from "react-native";
 
 import {CATEGORIES} from "../data/dummy-data";
+import Colors from "../constants/Colors"
 
 
-function renderListItem(itemData){
-    return(
-        <View style={styles.gridItem}>
-            <Text>{itemData.item.title}</Text>
-        </View>
-    )
-}
+
 
 function CategoriesScreen(props){
+
+    function renderListItem(itemData){
+        return(
+            <TouchableOpacity style={styles.gridItem} onPress={() => {
+                props.navigation.navigate({routeName: "CategoryMeal"})
+            }} >
+            <View>
+                <Text>{itemData.item.title}</Text>
+            </View>
+            </TouchableOpacity>
+        )
+    }
+    
     return(
         <FlatList 
             numColumns={2}
             data={CATEGORIES}
             renderItem={renderListItem}
         />
-
-        /* <View style={styles.screen}>
-            <Text>LOL</Text>
-            <Button title="Go To Meals" onPress={() => {
-                props.navigation.navigate({routeName: "CategoryMeal"})
-                //props.navigation.replace("CategoryMeal") // Cant go back with replace
-            }} />
-        </View> */
     )
+}
+
+CategoriesScreen.navigationOptions = {
+    headerTitle: "Meal Categories",
+    headerStyle: {
+        backgroundColor: Colors.primaryColor
+    },
+    headerTintColor: "white"
 }
 
 const styles = StyleSheet.create({
