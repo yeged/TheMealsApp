@@ -1,5 +1,6 @@
 import React from "react";
 import {View, Text, StyleSheet, Button, FlatList} from "react-native";
+import MealItem from "../components/MealItem"
 
 
 
@@ -13,9 +14,14 @@ function CategoryMealScreen(props){
 
     function renderMealItem(itemData){
         return(
-            <View>
-                <Text>{itemData.item.title}</Text>
-            </View>
+           <MealItem 
+           onSelectMeal={() => {}}
+            title={itemData.item.title}
+            affordability={itemData.item.affordability}
+            duration={itemData.item.duration}
+            complexity={itemData.item.complexity}
+            image={itemData.item.imageURL}
+           />
         )
     }
 
@@ -23,7 +29,8 @@ function CategoryMealScreen(props){
         <View style={styles.screen}>
         <FlatList 
             data={displayedMeals}
-            renderItem={renderMealItem}  
+            renderItem={renderMealItem} 
+            style={{width: "95%"}} 
         />
         </View>
     )
