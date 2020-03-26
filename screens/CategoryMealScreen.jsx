@@ -1,27 +1,30 @@
 import React from "react";
-import {View, Text, StyleSheet, Button} from "react-native";
+import {View, Text, StyleSheet, Button, FlatList} from "react-native";
 
 
 
-import {CATEGORIES} from "../data/dummy-data"
+import {CATEGORIES, MEALS} from "../data/dummy-data"
 
 function CategoryMealScreen(props){
 
     const catId = props.navigation.getParam("categoryId");
 
-    const selectedMeal = CATEGORIES.find((value) => value.id === catId)
+    const displayedMeals = MEALS.filter((meal) => meal.categoryIds.indexOf(catId) >= 0)
+
+    function renderMealItem(itemData){
+        return(
+            <View>
+                <Text>{itemData.item.title}</Text>
+            </View>
+        )
+    }
 
     return(
         <View style={styles.screen}>
-            <Text>This is Meal screen</Text>
-            <Text> {selectedMeal.title} </Text>
-            <Button title="Go To Detail" onPress={() => {
-                props.navigation.push("MealDetail") // u can use push instead of navigate in same screen different content
-            }} />
-            <Button title="Go Back" onPress={() => {
-                //props.navigation.goBack(); // GO BACK
-                props.navigation.pop();  // GO BACK FOR STACK
-            }} />
+        <FlatList 
+            data={displayedMeals}
+            renderItem={renderMealItem}  
+        />
         </View>
     )
 }   
