@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import {View, Text, StyleSheet, Button, FlatList, TouchableOpacity} from "react-native";
 
 import {CATEGORIES} from "../data/dummy-data";
-import Colors from "../constants/Colors"
+import { useScreens } from "react-native-screens"
 
-
+useScreens(); // for better performance
 
 
 function CategoriesScreen(props){
@@ -33,11 +33,7 @@ function CategoriesScreen(props){
 }
 
 CategoriesScreen.navigationOptions = {
-    headerTitle: "Meal Categories",
-    headerStyle: {
-        backgroundColor: Colors.primaryColor
-    },
-    headerTintColor: "white"
+    headerTitle: "Meal Categories"
 }
 
 const styles = StyleSheet.create({
