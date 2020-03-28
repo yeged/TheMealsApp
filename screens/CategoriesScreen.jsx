@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, Button, FlatList, TouchableOpacity } from "reac
 
 import CategoryGridTile from "../components/CategoryGridTile"
 import { CATEGORIES } from "../data/dummy-data";
-import { enableScreens } from "react-native-screens"
+
 import HeaderButton from "../components/HeaderButton";
 import { HeaderButtons, Item } from "react-navigation-header-buttons"
 
-enableScreens(); // for better performance
+
 
 
 function CategoriesScreen(props) {
