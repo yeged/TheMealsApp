@@ -69,9 +69,6 @@ const tabScreenConfig = {
     }
 }
 
-const FiltersNavigator = createStackNavigator({
-    Filters: FilterScreen
-}, defaultStackNavOptions)
 
 
 const MealsFavTabNav = Platform.OS === "android" ?
@@ -90,6 +87,11 @@ const MealsFavTabNav = Platform.OS === "android" ?
             }
         }
     })
+
+    
+const FiltersNavigator = createStackNavigator({
+    Filters: FilterScreen
+}, defaultStackNavOptions)
 
 const MainNavigator = createDrawerNavigator({
     MealsFav: { 

@@ -1,9 +1,15 @@
 import React from "react";
-import {View, Text, StyleSheet, Button} from "react-native";
+import {ScrollView, Image, View, Text, StyleSheet, Button} from "react-native";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import { HeaderButtons, Item } from "react-navigation-header-buttons"
 import HeaderButton from "../components/HeaderButton";
+import DefaultText from "../components/DefaultText"
 
+const ListItem = props => {
+    return <View style={styles.listItem}>
+        <DefaultText>{props.children}</DefaultText>
+    </View>
+}
 
 function MealDetailScreen(props){
 
@@ -12,12 +18,20 @@ function MealDetailScreen(props){
     const selectedMeal = MEALS.find(meal => meal.id === mealId)
 
     return(
-        <View style={styles.screen}>
-            <Text>{selectedMeal.title}</Text>
-            <Button title="Go Back to TOP" onPress={() => {
-                props.navigation.popToTop(); 
-            }} />
-        </View>
+        <ScrollView>
+            <Image source={{uri: selectedMeal.imageURL}} style={styles.image} />
+            <View style={styles.detail}> 
+            <DefaultText>{selectedMeal.duration}</DefaultText>
+            <DefaultText>{selectedMeal.affordability.toUpperCase()}</DefaultText>
+            <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
+            </View>
+            <View>
+                <Text style={styles.title}>Ingredients</Text>
+                {selectedMeal.ingredients.map(ingredient => <ListItem key={ingredient}>{ingredient}</ListItem> )}
+                <Text style={styles.title}>Steps</Text>
+                {selectedMeal.steps.map(step => <ListItem key={step}>{step}</ListItem>)}
+            </View>
+        </ScrollView>
     )
    
 }
@@ -42,10 +56,28 @@ MealDetailScreen.navigationOptions = (navigationData) => {
 }
 
 const styles = StyleSheet.create({
-    screen:{
-        flex:1,
-        justifyContent: "center",
-        alignItems: "center"
+    image:{
+        width: "100%",
+        height: 200
+        
+    },
+    detail:{
+        flexDirection:"row",
+        justifyContent: "space-around",
+        padding: 12
+    },
+    title:{
+        fontFamily: "open-sans-bold",
+        fontSize: 20,
+        textAlign: "center"
+    },
+    listItem:{
+        marginVertical:10,
+        marginHorizontal:20,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: "#ccc"
+
     }
 })
 
