@@ -19,7 +19,7 @@ import FilterScreen from "../screens/FiltersScreen"
 const defaultStackNavOptions = {
     defaultNavigationOptions: {
         headerStyle: {
-            backgroundColor: Colors.primaryColor
+            backgroundColor: Colors.primaryColor,
         },
         headerTitleStyle:{
             fontFamily: "open-sans-bold"
