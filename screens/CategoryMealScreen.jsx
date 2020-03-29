@@ -1,6 +1,6 @@
 import React from "react";
 import MealList from "../components/MealList"
-
+import {View, Text, StyleSheet} from "react-native";
 
 
 import {CATEGORIES} from "../data/dummy-data"
@@ -14,7 +14,13 @@ function CategoryMealScreen(props){
 
     const displayedMeals = availableMeals.filter((meal) => meal.categoryIds.indexOf(catId) >= 0)
 
-    
+    if(displayedMeals.length === 0){
+        return(
+            <View style={styles.content}>
+                <Text>No Meals Found, Maybe Check Your Filters ?</Text>
+            </View>
+        )
+    }
 
     return(
         <MealList List={displayedMeals} navigation={props.navigation}/>
@@ -30,6 +36,14 @@ CategoryMealScreen.navigationOptions = (navigationData) => {
         headerTitle: selectedMeal.title
     })
 }
+
+const styles = StyleSheet.create({
+    content:{
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center"
+    }
+})
 
 
 
